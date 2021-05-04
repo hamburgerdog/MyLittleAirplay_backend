@@ -33,4 +33,9 @@ public class AlbumControl {
         byte[] image = albumService.getAlbumImageById(albumId);
         return ResponseEntity.ok(image);
     }
+
+    @GetMapping("/name/{id}")
+    ResponseEntity<String> getAlbumName(@PathVariable("id") int albumId) {
+        return ResponseEntity.ok(albumService.getAlbumById(albumId).getAlbumName());
+    }
 }
