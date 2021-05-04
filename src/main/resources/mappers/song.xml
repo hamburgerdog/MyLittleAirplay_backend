@@ -22,4 +22,9 @@
         select count(*)
         from Song;
     </select>
+    <select id="getSongByName" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
+        select songId, songName, albumId, url, songCoverUrl
+        from Song
+        where songName = #{songName}
+    </select>
 </mapper>

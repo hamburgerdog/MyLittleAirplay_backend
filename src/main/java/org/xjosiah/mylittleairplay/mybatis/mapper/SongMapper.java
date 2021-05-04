@@ -12,5 +12,7 @@ public interface SongMapper {
 
     Song getSongById(@Param("songId") int id);
 
+    Song getSongByName(@Param("songName") String name);
+
     int countSong();
 }
