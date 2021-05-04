@@ -6,7 +6,6 @@ plugins {
 
 group = 'org.xjosiah'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -21,6 +20,10 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+
+    compile group: 'ws.schild', name: 'jave-core', version: '3.1.1'
+    compile group: 'ws.schild', name: 'jave-nativebin-osx64', version: '3.1.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

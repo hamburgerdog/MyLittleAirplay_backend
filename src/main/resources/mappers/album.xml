@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xjosiah.mylittleairplay.mybatis.mapper.AlbumMapper">
+    <select id="getAlbumById" resultType="album">
+        select *
+        from Album
+        where albumId = #{id}
+    </select>
+    <select id="getAlbumByName" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Album">
+        select albumId, albumName, albumCoverUrl
+        from Album
+        where albumName = #{name}
+    </select>
+</mapper>

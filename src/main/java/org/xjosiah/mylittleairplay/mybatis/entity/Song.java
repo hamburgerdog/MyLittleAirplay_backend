@@ -6,7 +6,7 @@ import lombok.Data;
 public class Song {
     private int songId;
     private String songName;
-    private String albumId;
+    private int albumId;
     private String url;
     private String songCoverUrl;
 }

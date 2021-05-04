@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xjosiah.mylittleairplay.mybatis.mapper.SongMapper">
+
+    <insert id="addSong" parameterType="song">
+        insert into Song(songName, albumId, url, songCoverUrl)
+        VALUES (#{songName}, #{albumId}, #{url}, #{songCoverUrl})
+    </insert>
+    <update id="updataSongName">
+        update Song
+        set songName=#{songName}
+        where songId = #{songId}
+    </update>
+    <select id="getSongById" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
+        select songId, songName, albumId, url, songCoverUrl
+        from Song
+        where songId = #{songId}
+    </select>
+    <select id="countSong" resultType="java.lang.Integer">
+        select count(*)
+        from Song;
+    </select>
+</mapper>
