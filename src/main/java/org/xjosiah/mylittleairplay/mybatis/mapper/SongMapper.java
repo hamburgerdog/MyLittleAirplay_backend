@@ -8,7 +8,7 @@ import org.xjosiah.mylittleairplay.mybatis.entity.Song;
 public interface SongMapper {
     int addSong(Song song);
 
-    void updataSongName(int songId, String songName);
+    void updateSongName(int songId, String songName);
 
     Song getSongById(@Param("songId") int id);
 

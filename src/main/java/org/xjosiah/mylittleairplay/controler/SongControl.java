@@ -4,10 +4,7 @@ import cn.hutool.json.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.xjosiah.mylittleairplay.Service.SongService;
 
 @Controller
@@ -19,8 +16,15 @@ public class SongControl {
 
     @GetMapping("/random")
     @ResponseBody
-    ResponseEntity<String> getRandomSongs(){
+    ResponseEntity<String> getRandomSongs() {
         return ResponseEntity.ok(JSONUtil.toJsonStr(songService.getRandomSongs(10)));
     }
+
+    @GetMapping("/random/{limit}")
+    @ResponseBody
+    ResponseEntity<String> getRandomSongsByLimit(@PathVariable("limit") int limit) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(songService.getRandomSongs(limit)));
+    }
+
 
 }

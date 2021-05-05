@@ -8,7 +8,7 @@
         insert into Song(songName, albumId, url, songCoverUrl)
         VALUES (#{songName}, #{albumId}, #{url}, #{songCoverUrl})
     </insert>
-    <update id="updataSongName">
+    <update id="updateSongName">
         update Song
         set songName=#{songName}
         where songId = #{songId}

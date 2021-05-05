@@ -50,7 +50,7 @@ public class CreateTable {
             if (songName.startsWith("my little airport - ")){
                 songName = songName.substring(20);
             }
-            songMapper.updataSongName(id,songName);
+            songMapper.updateSongName(id,songName);
         }
     }
 }

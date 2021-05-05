@@ -32,3 +32,5 @@ out/
 .vscode/
 
 .DS_Store
+._**
+/src/main/resources/static/my_little_airplay_resource/
