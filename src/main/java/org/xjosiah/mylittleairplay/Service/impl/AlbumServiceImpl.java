@@ -43,4 +43,9 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Song> getAlbumSongsById(int albumId) {
         return songMapper.getSongByAlbumId(albumId);
     }
+
+    @Override
+    public List<Album> getAlbums() {
+        return albumMapper.getAlbums();
+    }
 }

@@ -13,4 +13,6 @@ public interface AlbumService {
     byte[] getAlbumImageById(int id);
 
     List<Song> getAlbumSongsById(int albumId);
+
+    List<Album> getAlbums();
 }

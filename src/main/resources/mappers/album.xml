@@ -13,4 +13,8 @@
         from Album
         where albumName = #{name}
     </select>
+    <select id="getAlbums" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Album">
+        select albumId, albumName, albumCoverUrl
+        from Album
+    </select>
 </mapper>
