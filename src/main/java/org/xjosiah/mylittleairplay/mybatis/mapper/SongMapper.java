@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.xjosiah.mylittleairplay.mybatis.entity.Song;
 
+import java.util.List;
+
 @Repository
 public interface SongMapper {
     int addSong(Song song);
@@ -15,4 +17,6 @@ public interface SongMapper {
     Song getSongByName(@Param("songName") String name);
 
     int countSong();
+
+    List<Song> getSongByAlbumId(int albumId);
 }

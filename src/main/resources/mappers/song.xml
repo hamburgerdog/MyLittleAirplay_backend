@@ -27,4 +27,9 @@
         from Song
         where songName = #{songName}
     </select>
+    <select id="getSongByAlbumId" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
+        select songId, songName, albumId, url, songCoverUrl
+        from Song
+        where albumId = #{albumId}
+    </select>
 </mapper>

@@ -38,4 +38,9 @@ public class AlbumControl {
     ResponseEntity<String> getAlbumName(@PathVariable("id") int albumId) {
         return ResponseEntity.ok(albumService.getAlbumById(albumId).getAlbumName());
     }
+
+    @GetMapping("/albumSongs/{id}")
+    ResponseEntity<String> getAlbumSongsById(@PathVariable("id") int albumId) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.getAlbumSongsById(albumId)));
+    }
 }
