@@ -17,4 +17,6 @@ public interface SongService {
     File getSongByUrl(String url);
 
     int countSongs();
+
+    List<Song> searchSongsByName(String songName);
 }

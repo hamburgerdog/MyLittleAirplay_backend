@@ -26,5 +26,9 @@ public class SongControl {
         return ResponseEntity.ok(JSONUtil.toJsonStr(songService.getRandomSongs(limit)));
     }
 
-
+    @GetMapping("/name/{songName}")
+    ResponseEntity<String> searchSongByName(@PathVariable("songName") String songName){
+        System.out.println(songService.searchSongsByName(songName));
+        return ResponseEntity.ok(JSONUtil.toJsonStr(songService.searchSongsByName(songName)));
+    }
 }

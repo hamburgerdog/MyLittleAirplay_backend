@@ -19,4 +19,6 @@ public interface SongMapper {
     int countSong();
 
     List<Song> getSongByAlbumId(int albumId);
+
+    List<Song> searchByName(@Param("songName") String songName);
 }

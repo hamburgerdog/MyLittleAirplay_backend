@@ -64,4 +64,9 @@ public class SongServiceImpl implements SongService {
     public int countSongs() {
         return songMapper.countSong();
     }
+
+    @Override
+    public List<Song> searchSongsByName(String songName) {
+        return songMapper.searchByName(songName);
+    }
 }

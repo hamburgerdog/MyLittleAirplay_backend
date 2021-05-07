@@ -32,4 +32,9 @@
         from Song
         where albumId = #{albumId}
     </select>
+    <select id="searchByName" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
+        select songId, songName, albumId, url, songCoverUrl
+        from Song
+        where songName like concat(#{songName},'%');
+    </select>
 </mapper>
