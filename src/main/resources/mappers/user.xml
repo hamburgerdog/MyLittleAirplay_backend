@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xjosiah.mylittleairplay.mybatis.mapper.UserMapper">
+    <insert id="insertUser">
+        insert into User(userKey, uuid) value (#{key}, #{uuid})
+    </insert>
+    <select id="selUserByKey" resultType="org.xjosiah.mylittleairplay.mybatis.entity.User">
+        select userKey, uuid
+        from User
+        where userKey = #{key}
+    </select>
+</mapper>

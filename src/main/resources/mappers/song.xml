@@ -9,7 +9,7 @@
         VALUES (#{songName}, #{albumId}, #{url}, #{songCoverUrl})
     </insert>
     <insert id="insertCollectedSong">
-        insert into SongCollection(userId, songId) value (#{userId}, #{songId})
+        insert ignore into SongCollection(userId, songId) value (#{userId}, #{songId})
     </insert>
     <update id="updateSongName">
         update Song
