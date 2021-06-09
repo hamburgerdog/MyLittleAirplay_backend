@@ -21,4 +21,10 @@ public interface SongMapper {
     List<Song> getSongByAlbumId(int albumId);
 
     List<Song> searchByName(@Param("songName") String songName);
+
+    Boolean insertCollectedSong(@Param("userId") String userId, @Param("songId") int songId);
+
+    Boolean delectCollectedSong(@Param("userId") String userId, @Param("songId") int songId);
+
+    List<Song> selectSongCollection(@Param("userId") String userId);
 }

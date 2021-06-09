@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.xjosiah.mylittleairplay.Service.AlbumService;
 
-import javax.websocket.server.PathParam;
-
 @Controller
 @RequestMapping("album")
 @CrossOrigin
@@ -47,5 +45,20 @@ public class AlbumControl {
     @GetMapping("/albums")
     ResponseEntity<String> getAlbums() {
         return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.getAlbums()));
+    }
+
+    @PutMapping("/like/{userId}/{albumId}")
+    ResponseEntity<String> collectAlbum(@PathVariable("userId") String userId, @PathVariable("albumId") int albumId) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.collectAlbum(userId,albumId)));
+    }
+
+    @DeleteMapping("/like/{userId}/{albumId}")
+    ResponseEntity<String> removeCollectedAlbum(@PathVariable("userId") String userId, @PathVariable("albumId") int albumId) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.removeCollectedAlbum(userId,albumId)));
+    }
+
+    @GetMapping("/like/{userId}")
+    ResponseEntity<String> getAlbumCollection(@PathVariable String userId){
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.getAlbumCollection(userId)));
     }
 }

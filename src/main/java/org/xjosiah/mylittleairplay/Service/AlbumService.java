@@ -15,4 +15,10 @@ public interface AlbumService {
     List<Song> getAlbumSongsById(int albumId);
 
     List<Album> getAlbums();
+
+    Boolean collectAlbum(String userId, int albumId);
+
+    Boolean removeCollectedAlbum(String userId, int albumId);
+
+    List<Album> getAlbumCollection(String userId);
 }

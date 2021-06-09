@@ -28,7 +28,21 @@ public class SongControl {
 
     @GetMapping("/name/{songName}")
     ResponseEntity<String> searchSongByName(@PathVariable("songName") String songName){
-        System.out.println(songService.searchSongsByName(songName));
         return ResponseEntity.ok(JSONUtil.toJsonStr(songService.searchSongsByName(songName)));
+    }
+
+    @PutMapping("/like/{userId}/{songId}")
+    ResponseEntity<String> collectSong(@PathVariable("userId") String userId, @PathVariable("songId") int songId) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(songService.collectSong(userId,songId)));
+    }
+
+    @DeleteMapping("/like/{userId}/{songId}")
+    ResponseEntity<String> removeCollectedSong(@PathVariable("userId") String userId, @PathVariable("songId") int songId) {
+        return ResponseEntity.ok(JSONUtil.toJsonStr(songService.delCollectedSong(userId,songId)));
+    }
+
+    @GetMapping("/like/{userId}")
+    ResponseEntity<String> getSongCollection(@PathVariable String userId){
+        return ResponseEntity.ok(JSONUtil.toJsonStr(songService.getSongCollection(userId)));
     }
 }

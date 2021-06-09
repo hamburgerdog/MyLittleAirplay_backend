@@ -19,4 +19,10 @@ public interface SongService {
     int countSongs();
 
     List<Song> searchSongsByName(String songName);
+
+    Boolean collectSong(String userId, int songId);
+
+    Boolean delCollectedSong(String userId, int songId);
+
+    List<Song> getSongCollection(String userId);
 }

@@ -8,11 +8,20 @@
         insert into Song(songName, albumId, url, songCoverUrl)
         VALUES (#{songName}, #{albumId}, #{url}, #{songCoverUrl})
     </insert>
+    <insert id="insertCollectedSong">
+        insert into SongCollection(userId, songId) value (#{userId}, #{songId})
+    </insert>
     <update id="updateSongName">
         update Song
         set songName=#{songName}
         where songId = #{songId}
     </update>
+    <delete id="delectCollectedSong">
+        delete
+        from SongCollection
+        where userId = #{userId}
+          and songId = #{songId}
+    </delete>
     <select id="getSongById" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
         select songId, songName, albumId, url, songCoverUrl
         from Song
@@ -35,6 +44,13 @@
     <select id="searchByName" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
         select songId, songName, albumId, url, songCoverUrl
         from Song
-        where songName like concat(#{songName},'%');
+        where songName like concat(#{songName}, '%');
+    </select>
+    <select id="selectSongCollection" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Song">
+        select a.songId, a.songName, a.albumId, a.url, a.songCoverUrl
+        from Song a,
+             SongCollection b
+        where a.songId = b.songId
+          and b.userId = #{userId}
     </select>
 </mapper>

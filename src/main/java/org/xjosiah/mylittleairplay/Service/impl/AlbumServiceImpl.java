@@ -48,4 +48,19 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Album> getAlbums() {
         return albumMapper.getAlbums();
     }
+
+    @Override
+    public Boolean collectAlbum(String userId, int albumId) {
+        return albumMapper.insertCollectedAlbum(userId,albumId);
+    }
+
+    @Override
+    public Boolean removeCollectedAlbum(String userId, int albumId) {
+        return albumMapper.deleteCollectedAlbum(userId,albumId);
+    }
+
+    @Override
+    public List<Album> getAlbumCollection(String userId) {
+        return albumMapper.selectAlbumCollection(userId);
+    }
 }

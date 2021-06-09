@@ -69,4 +69,19 @@ public class SongServiceImpl implements SongService {
     public List<Song> searchSongsByName(String songName) {
         return songMapper.searchByName(songName);
     }
+
+    @Override
+    public Boolean collectSong(String userId, int songId) {
+        return songMapper.insertCollectedSong(userId,songId);
+    }
+
+    @Override
+    public Boolean delCollectedSong(String userId, int songId) {
+        return songMapper.delectCollectedSong(userId,songId);
+    }
+
+    @Override
+    public List<Song> getSongCollection(String userId) {
+        return songMapper.selectSongCollection(userId);
+    }
 }

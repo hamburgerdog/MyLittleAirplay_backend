@@ -12,4 +12,10 @@ public interface AlbumMapper {
     Album getAlbumByName(String name);
 
     List<Album> getAlbums();
+
+    Boolean insertCollectedAlbum(@Param("userId") String userId, @Param("albumId") int albumId);
+
+    Boolean deleteCollectedAlbum(@Param("userId") String userId, @Param("albumId") int albumId);
+
+    List<Album> selectAlbumCollection(@Param("userId") String userId);
 }

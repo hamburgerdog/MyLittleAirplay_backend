@@ -3,6 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.xjosiah.mylittleairplay.mybatis.mapper.AlbumMapper">
+    <insert id="insertCollectedAlbum">
+        insert into AlbumCollection value (userId = #{userId}, albumId = #{albumId})
+    </insert>
+    <delete id="deleteCollectedAlbum">
+        delete
+        from AlbumCollection
+        where userId = #{userId}
+          and albumId = #{albumId}
+    </delete>
     <select id="getAlbumById" resultType="album">
         select *
         from Album
@@ -16,5 +25,11 @@
     <select id="getAlbums" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Album">
         select albumId, albumName, albumCoverUrl
         from Album
+    </select>
+    <select id="selectAlbumCollection" resultType="org.xjosiah.mylittleairplay.mybatis.entity.Album">
+        select a.albumId, a.albumName, a.albumCoverUrl
+        from Album a,
+             AlbumCollection b
+        where a.albumId = b.albumId and b.userId = #{userId}
     </select>
 </mapper>
