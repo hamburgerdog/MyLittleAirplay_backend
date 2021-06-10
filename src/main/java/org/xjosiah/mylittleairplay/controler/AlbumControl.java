@@ -1,6 +1,8 @@
 package org.xjosiah.mylittleairplay.controler;
 
+import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.json.JSONUtil;
+import cn.hutool.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,12 @@ public class AlbumControl {
 
     @GetMapping("/img/{id}")
     ResponseEntity<byte[]> getImage(@PathVariable("id") int albumId) {
-        byte[] image = albumService.getAlbumImageById(albumId);
+        byte[] image;
+        try {
+            image = albumService.getAlbumImageById(albumId);
+        } catch (IORuntimeException e) {
+            return ResponseEntity.status(500).body(null);
+        }
         return ResponseEntity.ok(image);
     }
 
@@ -49,16 +56,16 @@ public class AlbumControl {
 
     @PutMapping("/like/{userId}/{albumId}")
     ResponseEntity<String> collectAlbum(@PathVariable("userId") String userId, @PathVariable("albumId") int albumId) {
-        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.collectAlbum(userId,albumId)));
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.collectAlbum(userId, albumId)));
     }
 
     @DeleteMapping("/like/{userId}/{albumId}")
     ResponseEntity<String> removeCollectedAlbum(@PathVariable("userId") String userId, @PathVariable("albumId") int albumId) {
-        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.removeCollectedAlbum(userId,albumId)));
+        return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.removeCollectedAlbum(userId, albumId)));
     }
 
     @GetMapping("/like/{userId}")
-    ResponseEntity<String> getAlbumCollection(@PathVariable String userId){
+    ResponseEntity<String> getAlbumCollection(@PathVariable String userId) {
         return ResponseEntity.ok(JSONUtil.toJsonStr(albumService.getAlbumCollection(userId)));
     }
 }
